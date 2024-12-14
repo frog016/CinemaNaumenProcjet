@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html xmlns:th="http://www.thymeleaf.org" xml:lang="ru-ru" lang="ru-ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Галерея фильмов</title>
-    <link rel="stylesheet" href="movie_list_styles.css">
+    <link rel="stylesheet" href="/css/movie_list_styles.css">
 </head>
 <body>
     <header>
@@ -16,15 +16,31 @@
         </div>
     </header>
 
+    <div class="form-container" id="movieForm" style="display:none;">
+        <h2>Добавить фильм</h2>
+        <form action="#" th:action="@{/movies/add}" th:object="${movie_form}" method="post">
+            <label for="title">Название:</label>
+            <input id="title" type="text" name="title" required th:field="*{title}"><br>
+
+            <label for="genre_form">Жанр:</label>
+            <input id="genre_form" type="text" name="genre" required th:field="*{genre}"><br>
+
+            <label for="duration">Длительность:</label>
+            <input id="duration" type="number" name="duration" required th:field="*{duration}"><br>
+
+            <input type="submit" value="Добавить фильм">
+        </form>
+    </div>
+
     <main>
         <div class="gallery" id="movie-gallery">
-            <!-- Пример карточки фильма -->
-            <div class="movie-card">
-                <img src="movie-poster.jpg" alt="Название фильма">
-                <h3>Название фильма</h3>
-                <p>Описание фильма...</p>
+
+            <div class="movie-card" th:each="movie : ${movies}">
+                <img src="" th:alt="${movie.title}">
+                <h3 th:text="${movie.title}"></h3>
+                <p th:text="${movie.genre}"></p>
             </div>
-            <!-- Добавьте больше карточек фильмов здесь -->
+
         </div>
     </main>
 
@@ -48,6 +64,11 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('add-movie-btn').onclick = function() {
+            let form = document.getElementById('movieForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        };
+    </script>
 </body>
 </html>
