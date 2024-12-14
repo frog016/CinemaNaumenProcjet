@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бронирование билетов</title>
+    <link rel="stylesheet" href="ticket_reservation_styles.css">
+</head>
+<body>
+<header>
+    <h1>Бронирование билетов</h1>
+</header>
+
+<main>
+    <h2>Выберите места</h2>
+    <div class="seating-chart">
+        <!-- Пример мест: 0 - свободное, 1 - занято, 2 - временно забронировано -->
+        <div class="seat" data-status="0">1</div>
+        <div class="seat" data-status="0">2</div>
+        <div class="seat" data-status="0">2</div>
+        <div class="seat" data-status="0">2</div>
+        <div class="seat" data-status="0">2</div>
+        <div class="seat" data-status="0">2</div>
+        <div class="seat" data-status="0">2</div>
+        <div class="seat" data-status="0">2</div>
+        <div class="seat" data-status="0">2</div>
+        <div class="seat" data-status="0">2</div>
+        <div class="seat" data-status="0">2</div>
+        <div class="seat" data-status="0">2</div>
+    </div>
+
+    <button id="book-button" onclick="bookSeats()">Забронировать</button>
+
+    <p id="message"></p>
+</main>
+
+<footer>
+    <p>&copy; 2023 Кинотеатр. Все права защищены.</p>
+</footer>
+</body>
+</html>

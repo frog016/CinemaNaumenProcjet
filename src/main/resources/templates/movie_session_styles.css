@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.movie-info {
+    display: flex;
+    padding: 20px;
+}
+
+.movie-poster {
+    max-width: 200px;
+    margin-right: 20px;
+}
+
+.description {
+    max-width: 600px;
+}
+
+.sessions {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.session-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.session-card:hover {
+    background-color: #f0f0f0;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
