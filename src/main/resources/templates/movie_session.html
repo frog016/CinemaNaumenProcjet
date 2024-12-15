@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html xmlns:th="http://www.thymeleaf.org" xml:lang="ru-ru" lang="ru-ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,41 +7,46 @@
     <link rel="stylesheet" href="/css/movie_session_styles.css">
 </head>
 <body>
-    <header>
-        <h1>Название фильма</h1>
-    </header>
+<header>
+    <h1 th:text="${movie.title}"></h1>
+</header>
 
-    <main>
-        <div class="movie-info">
-            <img src="movie-poster.jpg" alt="Название фильма" class="movie-poster">
-            <div class="description">
-                <h2>Описание</h2>
-                <p>Здесь будет краткое описание фильма. Это может быть синопсис, информация о режиссере, актерах и т.д.</p>
-                <p><strong>Жанр:</strong> Драма, Экшен</p>
-                <p><strong>Рейтинг:</strong> 8.5/10</p>
-            </div>
+<main>
+    <div class="movie-info">
+        <img src="" th:alt="${movie.title}" class="movie-poster">
+        <div class="description">
+            <h2>Описание</h2>
+            <p>
+                <strong>Жанр:</strong>
+                <th:block th:text="${movie.genre}"></th:block>
+            </p>
+            <p>
+                <strong>Длительность (минуты):</strong>
+                <th:block th:text="${movie.duration}"></th:block>
+            </p>
         </div>
+    </div>
 
-        <h2>Сеансы</h2>
-        <div class="sessions">
-            <div class="session-card" onclick="location.href='booking.html';">
-                <p><strong>Время:</strong> 14:00</p>
-                <p><strong>Стоимость:</strong> 500 ₽</p>
-            </div>
-            <div class="session-card" onclick="location.href='booking.html';">
-                <p><strong>Время:</strong> 16:30</p>
-                <p><strong>Стоимость:</strong> 500 ₽</p>
-            </div>
-            <div class="session-card" onclick="location.href='booking.html';">
-                <p><strong>Время:</strong> 19:00</p>
-                <p><strong>Стоимость:</strong> 600 ₽</p>
-            </div>
-            <!-- Добавьте больше сеансов по необходимости -->
+    <h2>Сеансы</h2>
+    <div class="sessions">
+        <div class="session-card" onclick="location.href='booking.html';">
+            <p><strong>Время:</strong> 14:00</p>
+            <p><strong>Стоимость:</strong> 500 ₽</p>
         </div>
-    </main>
+        <div class="session-card" onclick="location.href='booking.html';">
+            <p><strong>Время:</strong> 16:30</p>
+            <p><strong>Стоимость:</strong> 500 ₽</p>
+        </div>
+        <div class="session-card" onclick="location.href='booking.html';">
+            <p><strong>Время:</strong> 19:00</p>
+            <p><strong>Стоимость:</strong> 600 ₽</p>
+        </div>
+        <!-- Добавьте больше сеансов по необходимости -->
+    </div>
+</main>
 
-    <footer>
-        <p>&copy; 2023 Кинотеатр. Все права защищены.</p>
-    </footer>
+<footer>
+    <p>&copy; 2023 Кинотеатр. Все права защищены.</p>
+</footer>
 </body>
 </html>

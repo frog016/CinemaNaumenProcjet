@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xml:lang="ru-ru" lang="ru-ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Форма фильма</title>
-  <link rel="stylesheet" href="/css/edit_movie_styles.css">
+    <meta charset="UTF-8">
+    <title>Форма фильма</title>
+    <link rel="stylesheet" href="/css/edit_movie_styles.css">
 </head>
 <body>
 <div class="container">
-  <h1 th:text="${movie.id} == null ? 'Добавить фильм' : 'Редактировать фильм'"></h1>
-  <form th:action="@{/edit_movies/add}" th:object="${movie}" method="post">
-    <input type="hidden" th:field="*{id}"/>
+    <h1 th:text="${movie.id} == null ? 'Добавить фильм' : 'Редактировать фильм'"></h1>
+    <form th:action="@{/edit_movies/add}" th:object="${movie}" method="post">
+        <input type="hidden" th:field="*{id}"/>
 
-    <label for="title">Название:</label>
-    <input type="text" id="title" th:field="*{title}" required/>
+        <label for="title">Название:</label>
+        <input type="text" id="title" th:field="*{title}" required/>
 
-    <label for="genre">Жанр:</label>
-    <input type="text" id="genre" th:field="*{genre}" required/>
+        <label for="genre">Жанр:</label>
+        <input type="text" id="genre" th:field="*{genre}" required/>
 
-    <label for="duration">Длительность:</label>
-    <input type="number" id="duration" th:field="*{duration}" required/>
+        <label for="duration">Длительность:</label>
+        <input type="number" id="duration" th:field="*{duration}" required/>
 
-    <button type="submit" class="btn">Сохранить</button>
-    <a href="/edit_movies" class="btn">Отмена</a>
-  </form>
+        <button type="submit" class="btn">Сохранить</button>
+        <a href="/edit_movies" class="btn">Отмена</a>
+    </form>
 </div>
 </body>
 </html>
