@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xml:lang="ru-ru" lang="ru-ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма сеанса</title>
+    <link rel="stylesheet" href="/css/edit_movie_styles.css">
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${edited_session.id != null} ? 'Редактирование сеанса' : 'Добавление нового сеанса'"></h1>
+
+    <form th:action="@{/edit_sessions/{movieId}/add(movieId=${edited_movieId})}" th:object="${edited_session}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+
+        <label for="dateTime">Дата и время:</label>
+        <input type="date" id="dateTime" th:field="*{dateTime}" required/>
+
+        <label for="availableSeats">Доступные места:</label>
+        <input type="number" id="availableSeats" th:field="*{availableSeats}" required/>
+
+        <button type="submit" class="btn">Сохранить</button>
+        <a th:href="@{/edit_sessions/{movieId}(movieId=${edited_movieId})}" class="btn">Отмена</a>
+    </form>
+</div>
+</body>
+</html>

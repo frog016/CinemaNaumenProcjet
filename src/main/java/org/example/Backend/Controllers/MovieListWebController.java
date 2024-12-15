@@ -54,6 +54,6 @@ public class MovieListWebController {
         }
 
         model.addAttribute("movie", movie);
-        return "movie_session";
+        return "redirect:/movie_info/" + id;
     }
 }

@@ -8,6 +8,7 @@
 <body>
 <div class="container">
     <h1 th:text="${movie.id} == null ? 'Добавить фильм' : 'Редактировать фильм'"></h1>
+
     <form th:action="@{/edit_movies/add}" th:object="${movie}" method="post">
         <input type="hidden" th:field="*{id}"/>
 

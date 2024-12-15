@@ -27,6 +27,7 @@
             <td>
                 <a th:href="@{/edit_movies/edit/{id}(id=${movie.id})}" class="btn">Редактировать</a>
                 <a th:href="@{/edit_movies/delete/{id}(id=${movie.id})}" class="btn">Удалить</a>
+                <a th:href="@{/edit_sessions/{movieId}(movieId=${movie.id})}" class="btn">Сеансы</a>
             </td>
         </tr>
         </tbody>

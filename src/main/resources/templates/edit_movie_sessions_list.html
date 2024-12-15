@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xml:lang="ru-ru" lang="ru-ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Сеансы</title>
+    <link rel="stylesheet" href="/css/edit_movie_styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Сеансы для фильма
+        <th:block th:text="${movie.title}"></th:block>
+    </h1>
+
+    <a href="/edit_movies" class="btn">Вернуться к фильмам</a>
+    <a th:href="@{/edit_sessions/{movieId}/add(movieId=${movie.id})}" class="btn">Добавить новый сеанс</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Дата и время</th>
+            <th>Доступные места</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="session_arg : ${sessions}">
+            <td th:text="${session_arg.id}"></td>
+            <td th:text="${session_arg.dateTime}"></td>
+            <td th:text="${session_arg.availableSeats}"></td>
+            <td>
+                <a th:href="@{/edit_sessions/{movieId}/edit/{id}(movieId = ${movieId}, id = ${session_arg.id})}" class="btn">Редактировать</a>
+                <a th:href="@{/edit_sessions/{movieId}/delete/{id}(movieId = ${movieId}, id = ${session_arg.id})}" class="btn">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

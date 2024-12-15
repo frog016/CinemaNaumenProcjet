@@ -28,25 +28,19 @@
     </div>
 
     <h2>Сеансы</h2>
-    <div class="sessions">
-        <div class="session-card" onclick="location.href='booking.html';">
-            <p><strong>Время:</strong> 14:00</p>
-            <p><strong>Стоимость:</strong> 500 ₽</p>
-        </div>
-        <div class="session-card" onclick="location.href='booking.html';">
-            <p><strong>Время:</strong> 16:30</p>
-            <p><strong>Стоимость:</strong> 500 ₽</p>
-        </div>
-        <div class="session-card" onclick="location.href='booking.html';">
-            <p><strong>Время:</strong> 19:00</p>
-            <p><strong>Стоимость:</strong> 600 ₽</p>
-        </div>
-        <!-- Добавьте больше сеансов по необходимости -->
+    <div class="sessions" th:each="session_arg : ${sessions}">
+        <a class="link-div" th:href="@{/movie_info/session/{sessionId}(sessionId=${session_arg.id})}">
+            <div class="session-card">
+                <p>
+                    <strong>Время:</strong>
+                    <th:block th:text="${session_arg.dateTime}"></th:block>
+                </p>
+            </div>
+        </a>
     </div>
 </main>
 
 <footer>
-    <p>&copy; 2023 Кинотеатр. Все права защищены.</p>
 </footer>
 </body>
 </html>
