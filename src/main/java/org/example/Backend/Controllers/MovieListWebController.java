@@ -5,10 +5,12 @@ import org.example.Backend.Services.MovieService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/movies")
 public class MovieListWebController {
     private final MovieService movieService;
 
@@ -16,7 +18,7 @@ public class MovieListWebController {
         this.movieService = movieService;
     }
 
-    @GetMapping("/movies")
+    @GetMapping
     public String showMovies(@RequestParam(name = "search", required = false) String search,
                              @RequestParam(name = "genre", required = false) String genre,
                              Model model) {
@@ -31,14 +33,20 @@ public class MovieListWebController {
         }
 
         model.addAttribute("movies", movies);
-        model.addAttribute("movie_form", new Movie());
         model.addAttribute("search", search);
         model.addAttribute("genre", genre);
 
         return "movie_list";
     }
 
-    @GetMapping("/movies/{id}")
+    @PostMapping
+    public String searchMovies(@RequestParam(name = "search", required = false) String search,
+                               RedirectAttributes redirectAttributes) {
+        redirectAttributes.addAttribute("search", search);
+        return "redirect:/movies";
+    }
+
+    @GetMapping("/{id}")
     public String viewMovie(@PathVariable Long id, Model model) {
         Movie movie = movieService.getMovieById(id);
         if (movie == null) {
@@ -47,17 +55,5 @@ public class MovieListWebController {
 
         model.addAttribute("movie", movie);
         return "movie_session";
-    }
-
-    @GetMapping("/movies/add")
-    public String showAddMovie(Model model) {
-        model.addAttribute("movie_form", new Movie());
-        return "movie_list";
-    }
-
-    @PostMapping("/movies/add")
-    public String addMovie(@ModelAttribute("movie_form") Movie movie) {
-        movieService.addMovie(movie);
-        return "redirect:/movies";
     }
 }

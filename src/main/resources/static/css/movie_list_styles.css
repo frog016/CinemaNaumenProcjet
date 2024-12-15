@@ -15,6 +15,10 @@ header {
     margin-top: 10px;
 }
 
+.search-form {
+    display: inline;
+}
+
 input[type="text"] {
     padding: 10px;
     width: 300px;
@@ -83,51 +87,4 @@ button {
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
-
-.form-container {
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-}
-
-.form-container h2 {
-    text-align: center;
-    color: #333;
-}
-
-.form-container label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-.form-container input[type="text"],
-.form-container input[type="number"] {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-.form-container button {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.form-container button:hover {
-    background-color: #218838;
 }
