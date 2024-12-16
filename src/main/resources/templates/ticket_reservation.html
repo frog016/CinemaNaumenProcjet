@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html xmlns:th="http://www.thymeleaf.org" xml:lang="ru-ru" lang="ru-ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,29 +13,25 @@
 
 <main>
     <h2>Выберите места</h2>
+
+    <form th:action="@{/ticket_selection/{sessionId}/reserve(sessionId=${reservation_session})}" id="main-form"
+          method="post">
+    </form>
+
     <div class="seating-chart">
-        <!-- Пример мест: 0 - свободное, 1 - занято, 2 - временно забронировано -->
-        <div class="seat" data-status="0">1</div>
-        <div class="seat" data-status="0">2</div>
-        <div class="seat" data-status="0">2</div>
-        <div class="seat" data-status="0">2</div>
-        <div class="seat" data-status="0">2</div>
-        <div class="seat" data-status="0">2</div>
-        <div class="seat" data-status="0">2</div>
-        <div class="seat" data-status="0">2</div>
-        <div class="seat" data-status="0">2</div>
-        <div class="seat" data-status="0">2</div>
-        <div class="seat" data-status="0">2</div>
-        <div class="seat" data-status="0">2</div>
+        <form th:each="session_seat : ${seats}"
+              th:action="@{/ticket_selection/{sessionId}/select/{seatNumber}(sessionId=${reservation_session}, seatNumber=${session_seat.number})}"
+              th:id="'sub-form' + ${session_seat.number}" method="post">
+            <button th:form="'sub-form' + ${session_seat.number}" type="submit" class="seat" th:text="${session_seat.number}"
+                    th:data-status="${session_seat.status}">
+            </button>
+        </form>
     </div>
 
-    <button id="book-button" onclick="bookSeats()">Забронировать</button>
-
-    <p id="message"></p>
+    <button form="main-form" type="submit" class="btn">Забронировать</button>
 </main>
 
 <footer>
-    <p>&copy; 2023 Кинотеатр. Все права защищены.</p>
 </footer>
 </body>
 </html>

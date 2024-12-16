@@ -42,6 +42,6 @@ public class MovieInfoWebController {
         Movie movie = session.getMovie();
         model.addAttribute("movie", movie);
 
-        return "ticket_reservation";
+        return String.format("redirect:/ticket_selection/%d/seats", sessionId);
     }
 }

@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "tickets")
 public class Ticket {
     @Id
+    @GeneratedValue
     private Long id;
 
     @ManyToOne
